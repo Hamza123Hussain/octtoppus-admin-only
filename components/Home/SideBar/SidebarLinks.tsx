@@ -4,10 +4,7 @@ import {
   House,
   Users,
   FileText,
-  Calendar,
   PieChart,
-  User2,
-  ListTodo,
   Rows3,
 } from 'lucide-react' // Import additional icons
 import Link from 'next/link'
@@ -32,20 +29,20 @@ const SideBarLinks = () => {
         <ClipboardList size={18} />
         <h5>Create Task</h5>
       </Link>
-      <Link
+      {/* <Link
         href="/usertasks"
         className="text-white gap-3 flex w-full items-center hover:bg-white hover:text-[#5925da] hover:rounded-lg hover:px-2"
       >
         <ListTodo size={18} />
         <h5>User Tasks</h5>
-      </Link>
-      <Link
+      </Link> */}
+      {/* <Link
         href="/userattendance"
         className="text-white gap-3 flex w-full items-center hover:bg-white hover:text-[#5925da] hover:rounded-lg hover:px-2"
       >
         <Calendar size={18} />
         <h5>User Attendance</h5>
-      </Link>
+      </Link> */}
 
       {User.Email === 'octtoppus1@gmail.com' && (
         <>
@@ -79,13 +76,13 @@ const SideBarLinks = () => {
           </Link>
         </>
       )}
-      <Link
+      {/* <Link
         href="/Profile"
         className="text-white gap-3 flex w-full items-center hover:bg-white hover:text-[#5925da] hover:rounded-lg hover:px-2"
       >
         <User2 size={18} />
         <h5>Profile</h5>
-      </Link>
+      </Link> */}
     </>
   )
 }
