@@ -4,6 +4,7 @@ import TaskField from './TaskField'
 import UserAssign from './UserAssign'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/utils/Redux/Store/Store'
+
 const TaskForm: React.FC<TaskFormComponentProps> = ({
   taskData,
   setTaskData,
@@ -14,9 +15,20 @@ const TaskForm: React.FC<TaskFormComponentProps> = ({
     >
   ) => {
     const { name, value } = e.target
-    setTaskData((prev) => ({ ...prev, [name]: value }))
+
+    // Ensure `assignedTo` is treated as an array
+    if (name === 'assignedTo') {
+      setTaskData((prev) => ({
+        ...prev,
+        [name]: Array.isArray(value) ? value : [value], // Always store it as an array
+      }))
+    } else {
+      setTaskData((prev) => ({ ...prev, [name]: value }))
+    }
   }
+
   const User = useSelector((state: RootState) => state.user)
+
   return (
     <div>
       <TaskField
@@ -33,7 +45,6 @@ const TaskForm: React.FC<TaskFormComponentProps> = ({
         handleChange={handleChange}
         type="text"
       />
-
       <TaskField
         Label="Priority Level"
         name="priority"
@@ -63,4 +74,5 @@ const TaskForm: React.FC<TaskFormComponentProps> = ({
     </div>
   )
 }
+
 export default TaskForm
