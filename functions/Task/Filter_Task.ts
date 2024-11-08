@@ -6,7 +6,7 @@ export const filteredTasks = (
   timeFilter: string,
   priorityFilter: string,
   monthFilter: number, // New parameter for month filtering as a number
-  selectedUser: string
+  selectedUser?: string
 ) =>
   allTasks.filter((task) => {
     const matchesTimeFilter =
