@@ -8,13 +8,7 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-50 to-gray-100 p-6">
       {/* Logo */}
-      <Image
-        src="/logo.png"
-        alt="Logo"
-        width={280}
-        height={280}
-        className="mb-8"
-      />
+      <Image width={250} height={250} src="/Logo.png" alt="Logo" />
 
       {/* Welcome Message */}
       <h1 className="text-4xl font-bold text-gray-800 mb-4 text-center">
