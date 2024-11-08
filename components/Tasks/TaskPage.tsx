@@ -6,8 +6,9 @@ import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import Empty_Task_Test from '@/components/Tasks/Empty_Task_Test'
 import Loader from '@/components/Loader'
-import { fetchUserTasks } from '@/functions/Frontend/UserTasks'
+
 import { filteredTasks } from '@/functions/Task/Filter_Task'
+import { GetAllTasks } from '@/functions/Task/AllTasks'
 const TaskPage = () => {
   const [loading, setLoading] = useState(true)
   const [allTasks, setTasks] = useState<TaskFetch[]>([])
@@ -16,7 +17,7 @@ const TaskPage = () => {
   const SortTask = useSelector((state: RootState) => state.sort)
   useEffect(() => {
     const fetchData = async () => {
-      const tasks = await fetchUserTasks(selectedUser, user.Email, setLoading)
+      const tasks = await GetAllTasks(user.Email)
       setTasks(tasks) // Set the fetched tasks
       setLoading(false)
     }
@@ -39,14 +40,16 @@ const TaskPage = () => {
           SortTask.Status,
           SortTask.TimeFrame,
           SortTask.Prirority,
-          SortTask.Month
+          SortTask.Month,
+          selectedUser
         ).length > 0 && !loading ? (
           filteredTasks(
             allTasks,
             SortTask.Status,
             SortTask.TimeFrame,
             SortTask.Prirority,
-            SortTask.Month
+            SortTask.Month,
+            selectedUser
           ).map((task) => <TaskCard2 key={task.createdAt} TaskDetail={task} />)
         ) : (
           <Empty_Task_Test />
