@@ -9,10 +9,10 @@ export default function Home() {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-50 to-gray-100 p-6">
       {/* Logo */}
       <Image
-        src="https://ibb.co/1sSYhcL"
+        src="/logo.png"
         alt="Logo"
-        width={180}
-        height={180}
+        width={280}
+        height={280}
         className="mb-8"
       />
 
