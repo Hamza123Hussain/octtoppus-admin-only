@@ -2,7 +2,7 @@ export interface TaskFormProps {
   name: string
   description: string
   dueDate: string
-  assignedTo: string
+  assignedTo: string | string[]
   Email: string
   priority: string
   TaskType: string
