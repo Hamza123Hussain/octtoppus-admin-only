@@ -3,7 +3,7 @@ import {
   ClipboardList,
   House,
   Users,
-  FileText,
+  // FileText,
   PieChart,
   Rows3,
 } from 'lucide-react' // Import additional icons
@@ -60,13 +60,20 @@ const SideBarLinks = () => {
             <Rows3 size={18} />
             <h5>All Task Details</h5>
           </Link>
-          <Link
+          {/* <Link
             href="/report"
             className="text-white gap-3 w-full flex items-center hover:bg-white hover:text-[#5925da] hover:rounded-lg hover:px-2"
           >
             <FileText size={18} />
             <h5>Report</h5>
           </Link>
+          <Link
+            href="/Performacereport"
+            className="text-white gap-3 w-full flex items-center hover:bg-white hover:text-[#5925da] hover:rounded-lg hover:px-2"
+          >
+            <FileText size={18} />
+            <h5>Performance Report</h5>
+          </Link> */}
           <Link
             href="/users"
             className="text-white gap-3 flex w-full items-center hover:bg-white hover:text-[#5925da] hover:rounded-lg hover:px-2"
