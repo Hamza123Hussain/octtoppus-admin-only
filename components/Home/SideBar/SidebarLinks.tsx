@@ -27,7 +27,7 @@ const SideBarLinks = ({ closeSidebar }: { closeSidebar: () => void }) => {
       </Link>
 
       <Link
-        href="/createTask"
+        href="/createtask"
         onClick={closeSidebar}
         className={`gap-3 w-full flex items-center ${
           isActive('/createTask')
