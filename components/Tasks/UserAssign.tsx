@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { Allusers } from '@/functions/AUTH/Allusers'
 import { RootState } from '@/utils/Redux/Store/Store'
 import { UserFetched } from '@/utils/SignUpInterface'
@@ -8,7 +8,7 @@ const UserAssign = ({
   value,
   handleChange,
 }: {
-  value: string | string[] // It can be a single or multiple users
+  value: string | string[]
   handleChange: (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
@@ -19,18 +19,18 @@ const UserAssign = ({
   const [UserFetched, SetUserFetched] = useState<UserFetched[]>([])
   const [selectedUsers, setSelectedUsers] = useState<string[]>(
     Array.isArray(value) ? value : [value]
-  ) // To manage selected users as an array
+  )
 
-  const GetUsers = async () => {
+  const GetUsers = useCallback(async () => {
     const Data = await Allusers(User.Email)
     if (Data) {
       SetUserFetched(Data)
     }
-  }
+  }, [User.Email])
 
   useEffect(() => {
     GetUsers()
-  }, [])
+  }, [GetUsers])
 
   const toggleUserSelection = (userName: string) => {
     setSelectedUsers((prevSelectedUsers) => {
@@ -43,11 +43,15 @@ const UserAssign = ({
   }
 
   useEffect(() => {
-    // Cast to `unknown` first, and then cast it to the correct event type
-    handleChange({
-      target: { name: 'assignedTo', value: selectedUsers },
-    } as unknown as React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>)
-  }, [selectedUsers, handleChange])
+    // Use a timeout to prevent the render loop issue
+    const timeout = setTimeout(() => {
+      handleChange({
+        target: { name: 'assignedTo', value: selectedUsers },
+      } as unknown as React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>)
+    }, 100)
+
+    return () => clearTimeout(timeout)
+  }, [selectedUsers])
 
   return (
     <div className="mb-4">
