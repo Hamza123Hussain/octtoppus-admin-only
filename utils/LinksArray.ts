@@ -1,6 +1,11 @@
-import { House, ClipboardList, Users, PieChart, Rows3 } from 'lucide-react'
-import { RiGuideFill } from 'react-icons/ri'
-
+import {
+  House,
+  ClipboardList,
+  Users,
+  PieChart,
+  Rows3,
+  BookOpen,
+} from 'lucide-react'
 export const getSidebarLinks = (userEmail: string) => {
   return [
     {
@@ -34,7 +39,7 @@ export const getSidebarLinks = (userEmail: string) => {
     {
       href: '/Guide',
       label: 'Report Guide',
-      icon: RiGuideFill,
+      icon: BookOpen,
       restricted: userEmail === 'octtoppus1@gmail.com', // Ensure only restricted if needed
     },
   ]
