@@ -1,85 +1,39 @@
-import { RootState } from '@/utils/Redux/Store/Store'
-import { ClipboardList, House, Users, PieChart, Rows3 } from 'lucide-react'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import { useSelector } from 'react-redux'
+import { usePathname } from 'next/navigation'
+import { RootState } from '@/utils/Redux/Store/Store'
+import { getSidebarLinks } from '@/utils/LinksArray'
+import Link from 'next/link'
 
 const SideBarLinks = ({ closeSidebar }: { closeSidebar: () => void }) => {
-  const User = useSelector((state: RootState) => state.user)
+  const User = useSelector((state: RootState) => state.user) // Get the user from the state
   const pathname = usePathname()
 
   // Function to determine if a link is active
   const isActive = (path: string) => pathname === path
 
+  // Get the sidebar links filtered based on the user's email
+  const links = getSidebarLinks(User.Email)
+
   return (
     <>
-      <Link
-        href="/"
-        onClick={closeSidebar}
-        className={`gap-3 w-full flex items-center ${
-          isActive('/')
-            ? 'bg-white text-[#5925da] rounded-lg px-2'
-            : 'text-white'
-        } hover:bg-white hover:text-[#5925da] hover:rounded-lg hover:px-2`}
-      >
-        <House size={18} />
-        <h5>Home</h5>
-      </Link>
-
-      <Link
-        href="/createtask"
-        onClick={closeSidebar}
-        className={`gap-3 w-full flex items-center ${
-          isActive('/createTask')
-            ? 'bg-white text-[#5925da] rounded-lg px-2'
-            : 'text-white'
-        } hover:bg-white hover:text-[#5925da] hover:rounded-lg hover:px-2`}
-      >
-        <ClipboardList size={18} />
-        <h5>Create Task</h5>
-      </Link>
-
-      {User.Email === 'octtoppus1@gmail.com' && (
-        <>
+      {links.map((link, index) =>
+        !link.restricted ||
+        link.restricted === undefined ||
+        User.Email === 'octtoppus1@gmail.com' ? (
           <Link
-            href="/AllAttendance"
+            key={index}
+            href={link.href}
             onClick={closeSidebar}
             className={`gap-3 w-full flex items-center ${
-              isActive('/AllAttendance')
+              isActive(link.href)
                 ? 'bg-white text-[#5925da] rounded-lg px-2'
                 : 'text-white'
             } hover:bg-white hover:text-[#5925da] hover:rounded-lg hover:px-2`}
           >
-            <PieChart size={18} />
-            <h5>Total Attendance</h5>
+            <link.icon size={18} />
+            <h5>{link.label}</h5>
           </Link>
-
-          <Link
-            href="/All_Tasks"
-            onClick={closeSidebar}
-            className={`gap-3 w-full flex items-center ${
-              isActive('/All_Tasks')
-                ? 'bg-white text-[#5925da] rounded-lg px-2'
-                : 'text-white'
-            } hover:bg-white hover:text-[#5925da] hover:rounded-lg hover:px-2`}
-          >
-            <Rows3 size={18} />
-            <h5>All Task Details</h5>
-          </Link>
-
-          <Link
-            href="/users"
-            onClick={closeSidebar}
-            className={`gap-3 w-full flex items-center ${
-              isActive('/users')
-                ? 'bg-white text-[#5925da] rounded-lg px-2'
-                : 'text-white'
-            } hover:bg-white hover:text-[#5925da] hover:rounded-lg hover:px-2`}
-          >
-            <Users size={18} />
-            <h5>All Users</h5>
-          </Link>
-        </>
+        ) : null
       )}
     </>
   )
