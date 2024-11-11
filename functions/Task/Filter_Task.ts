@@ -1,3 +1,5 @@
+import { TaskFetch } from '@/utils/TaskformInterface'
+
 export const filteredTasks = (
   allTasks: TaskFetch[],
   statusFilter: string,
