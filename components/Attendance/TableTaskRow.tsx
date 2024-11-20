@@ -24,25 +24,25 @@ const TaskTableRow = ({
   return (
     <tbody>
       <tr>
-        <td className="border border-purple-600 text-[12px] sm:text-base md:text-lg p-4">
+        <td className="border border-purple-600 text-[12px] text-[#bd8bff] sm:text-base md:text-lg p-4">
           {userData}
         </td>
-        <td className="border border-purple-600 text-[12px] sm:text-base md:text-lg p-4">
+        <td className="border border-purple-600 text-[12px] text-[#bd8bff] sm:text-base md:text-lg p-4">
           {HighPriority}
         </td>
-        <td className="border border-purple-600 text-[12px] sm:text-base md:text-lg p-4">
+        <td className="border border-purple-600 text-[12px] text-[#bd8bff] sm:text-base md:text-lg p-4">
           {MediumPriority}
         </td>
-        <td className="border border-purple-600 text-[12px] sm:text-base md:text-lg p-4">
+        <td className="border border-purple-600 text-[12px] text-[#bd8bff] sm:text-base md:text-lg p-4">
           {records.length - (MediumPriority + HighPriority)}
         </td>
-        <td className="border border-purple-600 text-[12px] sm:text-base md:text-lg p-4">
+        <td className="border border-purple-600 text-[12px] text-[#bd8bff] sm:text-base md:text-lg p-4">
           {tasksAssigned}
         </td>
-        <td className="border border-purple-600 text-[12px] sm:text-base md:text-lg p-4">
+        <td className="border border-purple-600 text-[12px] text-[#bd8bff] sm:text-base md:text-lg p-4">
           {tasksCompleted}
         </td>
-        <td className="border border-purple-600 text-[12px] sm:text-base md:text-lg p-4">
+        <td className="border border-purple-600 text-[12px] text-[#bd8bff] sm:text-base md:text-lg p-4">
           {(TaskCompletion / records.length).toFixed(2)}%
         </td>
       </tr>
