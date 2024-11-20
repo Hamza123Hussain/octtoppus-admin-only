@@ -18,8 +18,6 @@ export const filteredTasks = (
     const matchesPriorityFilter =
       priorityFilter === 'All' || task.priority === priorityFilter
 
-    const TodoFilter = task.progress == 'TODO'
-
     const selectedUserFilter =
       selectedUser === 'All' || selectedUser === task.assignedTo
 
@@ -33,8 +31,7 @@ export const filteredTasks = (
       matchesStatusFilter &&
       matchesPriorityFilter &&
       matchesMonthFilter &&
-      selectedUserFilter &&
-      TodoFilter
+      selectedUserFilter
     )
   })
 
