@@ -29,6 +29,7 @@ const ReportCardtwo: React.FC<ReportCardProps> = ({
   lowPriorityTasks,
 }) => {
   const reportRef = useRef(null)
+
   const formattedTotalSalary = Math.floor(
     calculateTotalSalary(mergedData ? mergedData : [])
   )
