@@ -13,7 +13,7 @@ const ReportCard: React.FC<ReportCardProps> = ({
 }) => {
   const reportRef = useRef(null)
   const formattedTotalSalary = Math.floor(
-    calculateTotalSalary(mergedData)
+    calculateTotalSalary(mergedData ? mergedData : [])
   ).toLocaleString()
 
   return (
@@ -46,7 +46,7 @@ const ReportCard: React.FC<ReportCardProps> = ({
                 <th className="px-3 py-2 whitespace-nowrap">Salary</th>
               </tr>
             </thead>
-            <ReportBody mergedData={mergedData} />
+            {mergedData && <ReportBody mergedData={mergedData} />}
           </table>
         </div>
 
