@@ -6,6 +6,7 @@ import {
   Rows3,
   BookOpen,
 } from 'lucide-react'
+import { BiSolidReport } from 'react-icons/bi'
 export const getSidebarLinks = (userEmail: string) => {
   return [
     {
@@ -34,6 +35,12 @@ export const getSidebarLinks = (userEmail: string) => {
       href: '/users',
       label: 'All Users',
       icon: Users,
+      restricted: userEmail === 'octtoppus1@gmail.com', // Only show if the user is the admin
+    },
+    {
+      href: '/report',
+      label: 'Report',
+      icon: BiSolidReport,
       restricted: userEmail === 'octtoppus1@gmail.com', // Only show if the user is the admin
     },
     {
