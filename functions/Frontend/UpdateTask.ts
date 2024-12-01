@@ -42,7 +42,7 @@ export const handleUpdateTask = async (
     )
     if (UpdateTask) {
       toast.success('Task updated successfully!')
-      Router.push('/usertasks') // Use Router for navigation
+      Router.push('/') // Use Router for navigation
     }
   } catch (error) {
     toast.error(`Error updating task: ${error}`)
