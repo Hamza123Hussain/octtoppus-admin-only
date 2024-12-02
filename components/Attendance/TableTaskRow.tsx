@@ -20,7 +20,7 @@ const TaskTableRow = ({
     acc += element.TaskCompletion
     return acc
   }, 0)
-  const percenatge = 100.0
+
   return (
     <tbody>
       <tr>
