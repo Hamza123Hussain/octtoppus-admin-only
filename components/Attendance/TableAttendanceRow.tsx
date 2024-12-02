@@ -27,7 +27,7 @@ const AttendanceTableRow = ({
         ).toFixed(2)}
       </th>
       <th className="border border-purple-800 px-4 py-2 text-[#bd8bff]">
-        {((TotalHourWorked / 184) * 100).toFixed(2)}%
+        {((TotalHourWorked / 168) * 100).toFixed(2)}%
       </th>
     </tbody>
   )
