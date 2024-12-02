@@ -20,7 +20,7 @@ const TaskTableRow = ({
     acc += element.TaskCompletion
     return acc
   }, 0)
-
+  const percenatge = 100.0
   return (
     <tbody>
       <tr>
@@ -44,8 +44,8 @@ const TaskTableRow = ({
         </td>
         <td className="border border-purple-600 text-[12px] text-[#bd8bff] sm:text-base md:text-lg p-4">
           {userData === 'Arooj'
-            ? 100.0
-            : (TaskCompletion / records.length).toFixed(1)}
+            ? percenatge
+            : (TaskCompletion / records.length).toFixed(2)}
           %
         </td>
       </tr>
