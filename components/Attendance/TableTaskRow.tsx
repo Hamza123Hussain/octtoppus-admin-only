@@ -44,8 +44,8 @@ const TaskTableRow = ({
         </td>
         <td className="border border-purple-600 text-[12px] text-[#bd8bff] sm:text-base md:text-lg p-4">
           {userData === 'Arooj'
-            ? 100
-            : (TaskCompletion / records.length).toFixed(2)}
+            ? 100.0
+            : (TaskCompletion / records.length).toFixed(1)}
           %
         </td>
       </tr>
