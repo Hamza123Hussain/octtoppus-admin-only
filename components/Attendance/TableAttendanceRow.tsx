@@ -11,7 +11,7 @@ const AttendanceTableRow = ({
     acc += ele.Hours_Worked
     return acc
   }, 0)
-  const totalhours = 168
+  const totalhours = 176
   return (
     <tbody>
       <th className="border border-purple-800 px-4 py-2 text-[#bd8bff]">
@@ -27,7 +27,7 @@ const AttendanceTableRow = ({
         ).toFixed(2)}
       </th>
       <th className="border border-purple-800 px-4 py-2 text-[#bd8bff]">
-        {((TotalHourWorked / 168) * 100).toFixed(2)}%
+        {((TotalHourWorked / 176) * 100).toFixed(2)}%
       </th>
     </tbody>
   )

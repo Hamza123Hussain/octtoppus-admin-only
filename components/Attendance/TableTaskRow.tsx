@@ -16,10 +16,10 @@ const TaskTableRow = ({
   const MediumPriority = records.filter(
     (task) => task.priority === 'MEDIUM'
   ).length
-  const TaskCompletion = records.reduce((acc, element) => {
-    acc += element.TaskCompletion
-    return acc
-  }, 0)
+  // const TaskCompletion = records.reduce((acc, element) => {
+  //   acc += element.TaskCompletion
+  //   return acc
+  // }, 0)
 
   return (
     <tbody>
@@ -43,10 +43,7 @@ const TaskTableRow = ({
           {tasksCompleted}
         </td>
         <td className="border border-purple-600 text-[12px] text-[#bd8bff] sm:text-base md:text-lg p-4">
-          {userData === 'Arooj'
-            ? '100.00'
-            : (TaskCompletion / records.length).toFixed(2)}
-          %
+          100.00 %
         </td>
       </tr>
     </tbody>
